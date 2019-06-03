@@ -15,12 +15,6 @@ app.get('/', (req, res) => {
 
 app.use('/admin/data', require('./routes/admin/data.route'))
 
-
-
-
-
-
-
 // Handle 404 error
 app.use((req, res) => {
   res.status(400);
@@ -28,5 +22,5 @@ app.use((req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server is running at https://localhost:3000');
+  console.log('Server is running at localhost:3000');
 });
