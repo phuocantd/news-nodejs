@@ -5,7 +5,7 @@ var app = express();
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main.hbs',
-  layoutsDir: 'views/_layouts'
+  layoutsDir: 'views/_layouts',
 }));
 app.set('view engine', 'hbs');
 
@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.use('/admin/data', require('./routes/admin/data.route'))
+
+app.use('/post', require('./routes/admin/post.route'));
+app.use('/writter/writePost', require('./routes/admin/writePost.route'));
 
 // Handle 404 error
 app.use((req, res) => {

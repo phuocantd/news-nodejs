@@ -1,0 +1,57 @@
+{{!-- {{#section 'js'}}
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+$(function(){
+    tinymce.init({
+        selector: '#postContent'
+    });
+});
+
+{{/section}} --}}
+
+
+
+<div class="container my-5">
+    <div class="container-post-info shadow-lg bg-light p-3">
+        <form>
+            <div class="form-group">
+                <label>Title <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" placeholder="Title">
+            </div>
+            <div class="row form-group">
+                <div class="col form-group">
+                    <label>About</label>
+                    <select class="custom-select">
+                        <option selected>News</option>
+                        <option>Phones</option>
+                        <option>&emsp;iOS</option>
+                        <option>&emsp;Android</option>
+                        <option>Laptops</option>
+                        <option>&emsp;Asus</option>
+                        <option>&emsp;Dell</option>
+                        <option>&emsp;HP</option>
+                        <option>&emsp;MSI</option>
+                        <option>Technology</option>
+                    </select>
+                </div>
+                <div class="col form-group">
+                    <label>Tags</label>
+                    <!-- <input name='tags-writrer' class='some_class_name' placeholder='write some tags'
+                    value='css, html, javascript, css' autofocus data-blacklist='.NET,PHP'> -->
+                    <input type="text" class="form-control" placeholder="Ex: Laptops, Phones, ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Header picture</label>
+                <input type="file" class="form-control-file">
+            </div>
+            <button id="savePost" type="submit" class="btn btn-primary fixed-bottom">Save</button>
+            <textarea class="form-control" id="postContent"></textarea>
+        </form>
+    </div>
+
+</div>
