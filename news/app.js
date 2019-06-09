@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/post', require('./routes/admin/post.route'));
+app.use('/post/example', require('./routes/admin/post.route'));
+app.use('/post', require('./routes/post.route'));
 app.use('/writter/writePost', require('./routes/admin/writePost.route'));
 
 // Handle 404 error
