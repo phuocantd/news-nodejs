@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-
+app.use(express.static('publics'));
 app.use('/post/example', require('./routes/admin/post.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/writter/writePost', require('./routes/admin/writePost.route'));
