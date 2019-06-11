@@ -5,9 +5,43 @@
     <!-- News into categories -->
     <div class="row my-4">
         <!-- Post content -->
-        {{#each this.content}}
-        {{{Content}}}
-        {{/each}}
+        <div class="col-8 pl-0 post-content">
+            {{!-- Header - Description - Tags --}}
+            <h1>
+                <strong>
+                    {{singleContent.Title}}
+                </strong>
+            </h1>
+            <h4>
+                {{singleContent.Description}}
+            </h4>
+            <div class="post-info text-secondary d-flex my-4">
+                <div class="writter mr-3">
+                    <i class="fas fa-user-edit"></i>
+                    {{#each this.multipleContent}}
+                    <span>{{{Name}}}</span>
+                    {{/each}}
+                </div>
+                <div class="post-date mr-3">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>{{{time}}}</span>
+                </div>
+                <div class="tag">
+                    <i class="fas fa-tag"></i>
+                    {{#each this.multipleContent}}
+                    <a class="mr-2 text-secondary" href="#">{{{TagName}}}</a>
+                    {{/each}}
+                </div>
+            </div>
 
+            {{{singleContent.Content}}}
+
+            <!-- Facebook like & share buttons -->
+            <div class="fb-like" data-href="https://phuocantd.github.io/news/post/" data-width="" data-layout="standard"
+                data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <!-- Facebook comments -->
+            <div class="fb-comments" data-href="https://phuocantd.github.io/news/" data-width="" data-numposts="5">
+            </div>
+        </div>
     </div>
 </div>
