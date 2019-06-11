@@ -3,8 +3,8 @@ var createConnection = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'Tintin579314',
-        database: 'DemoDB'
+        password: '1234',
+        database: 'news_nodejs'
     });
 };
 

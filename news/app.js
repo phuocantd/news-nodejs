@@ -24,6 +24,8 @@ app.use((req, res) => {
   res.render('_error/404_error', {title: '404: File not found', error: 'File not found'});
 });
 
-app.listen(3000, () => {
-  console.log('Server is running at localhost:3000');
+app.listen(3001, () => {
+  console.log('Server is running at localhost:3001');
 });
+
+
