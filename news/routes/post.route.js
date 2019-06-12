@@ -6,15 +6,20 @@ var router = express.Router();
 
 router.get('/:id', (req, res) => {
     var id = req.params.id;
-    var content = post.content(id);
-    content.then(rows => {
-        // console.log(rows[0].Title);
+    var querry = post.content(id);
+    querry.then(rows => {
+        // console.log(rows);
         // console.log(moment(rows[0].PublishedDate).add(1, 'day').format('LLL'));
-        res.render('vwPost/index', {
-            singleContent: (rows[0]),
-            multipleContent: rows,
-            time: moment(rows[0].PublishedDate).add(1, 'day').format('LLL')
-        });
+        if (rows.length > 0) {
+            res.render('vwPost/index', {
+                singleContent: (rows[0]),
+                multipleContent: rows,
+                time: moment(rows[0].PublishedDate).add(1, 'day').format('LLL')
+            });
+        }
+        else {
+            res.render('_error/404_error', { title: '404: File not found', error: 'File not found', layout: false });
+        }
     }).catch(error => {
         console.log(error);
     });

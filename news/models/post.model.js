@@ -2,15 +2,13 @@ var db = require('../utils/db');
 
 module.exports = {
     content: () => {
-        return db.loadContent(`SELECT Content FROM news_nodejs.Posts`);
+        return db.loadContent(`SELECT Content FROM DemoDB.Posts`);
     },
     content: id => {
-        return db.loadContent(`SELECT puuu.*, ptt.TagName
-        FROM (select p.*, puu.Name from DemoDB.Posts p inner join 
-        (select pu.PostId, u.* from DemoDB.Posts_Users pu inner join DemoDB.Users u on pu.Author = u.UserId) puu 
-        on p.PostId = puu.PostId) puuu inner join
+        return db.loadContent(`select *
+        from (select p.*, u.Name from Posts p inner join Users u on p.Author = u.UserId) pu inner join 
         (select pt.PostId, t.* from DemoDB.Posts_Tags pt inner join DemoDB.Tags t on pt.TagId = t.TagId) ptt
-        on puuu.PostId = ptt.PostId
-        WHERE puuu.PostId = ${id}`);
+        on pu.PostId = ptt.PostId
+        WHERE pu.PostId = ${id}`);
     },
 };
