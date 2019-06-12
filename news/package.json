@@ -2,10 +2,9 @@
   "name": "news",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "watch": "nodemon app"
+    "dev": "nodemon app"
   },
   "author": "phuocantd <phuocantdgmail.com>",
   "license": "ISC",
@@ -15,7 +14,9 @@
     "express-handlebars-sections": "^1.0.1",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
-    "mysql": "^2.17.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
     "nodemon": "^1.19.1"
   }
 }
