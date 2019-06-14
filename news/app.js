@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('publics'));
+app.use('/account',require('./routes/account.route'))
 app.use('/post/example', require('./routes/admin/post.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/writter/writePost', require('./routes/admin/writePost.route'));
