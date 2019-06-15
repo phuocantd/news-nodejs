@@ -1,13 +1,21 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
-var hbs_sections = require('express-handlebars-sections')
+var hbs_sections = require('express-handlebars-sections');
+var morgan=require('morgan');
 
 var app = express();
+
+app.use(morgan('dev'));
+app.use(express.urlencoded());
+app.use(express.json());
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main.hbs',
   layoutsDir: 'views/_layouts',
   helpers: {
+    format: val => {
+      return numeral(val).format('0,0');
+    },
     section: hbs_sections()
   }
 }));
@@ -18,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('publics'));
-app.use('/account',require('./routes/account.route'))
+app.use('/account', require('./routes/account.route'))
 app.use('/post/example', require('./routes/admin/post.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/writter/writePost', require('./routes/admin/writePost.route'));
