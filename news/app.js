@@ -1,12 +1,7 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
-<<<<<<< HEAD
 var hbs_sections = require('express-handlebars-sections');
 var morgan=require('morgan');
-=======
-var hbs_sections = require('express-handlebars-sections')
-var morgan = require('morgan')
->>>>>>> edf54e23a784bdc5e8dec26d80b59a5745ec82a1
 
 var app = express();
 
