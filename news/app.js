@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('publics'));
+app.use('/account',require('./routes/account.route'))
 app.use('/post/example', require('./routes/admin/post.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/writter/writePost', require('./routes/admin/writePost.route'));
@@ -37,5 +38,5 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server is running at localhost:3000');
+  console.log('Server is running at http://localhost:3000/');
 });
