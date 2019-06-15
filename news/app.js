@@ -1,8 +1,13 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var hbs_sections = require('express-handlebars-sections')
+var morgan = require('morgan')
 
 var app = express();
+
+app.use(morgan('dev'));
+app.use(express.urlencoded());
+app.use(express.json());
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main.hbs',

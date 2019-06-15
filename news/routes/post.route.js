@@ -8,7 +8,7 @@ router.get('/:id', (req, res) => {
     var id = req.params.id;
     var querry = post.content(id);
     querry.then(rows => {
-        // console.log(rows);
+        console.log(rows);
         // console.log(moment(rows[0].PublishedDate).add(1, 'day').format('LLL'));
         if (rows.length > 0) {
             res.render('vwPost/index', {
