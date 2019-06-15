@@ -1,12 +1,19 @@
 var mysql = require('mysql');
+
 var createConnection = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
+<<<<<<< HEAD
         password: '12345',
+=======
+        password: '1234',
+>>>>>>> edf54e23a784bdc5e8dec26d80b59a5745ec82a1
         database: 'DemoDB'
     });
 };
+
+
 
 module.exports = {
     loadContent: sql => {
@@ -20,6 +27,7 @@ module.exports = {
             });
         });
     },
+<<<<<<< HEAD
     load: sql => {
         return new Promise((resolve, reject) => {
             var connection = createConnection();
@@ -34,6 +42,8 @@ module.exports = {
             });
         });
     },
+=======
+>>>>>>> edf54e23a784bdc5e8dec26d80b59a5745ec82a1
 
     add: (tableName, entity) => {
         return new Promise((resolve, reject) => {
@@ -41,6 +51,7 @@ module.exports = {
             var connection = createConnection();
             connection.connect();
             connection.query(sql, entity, (error, value) => {
+<<<<<<< HEAD
                 if (error) {
                     reject(error);
                 } else {
@@ -85,6 +96,14 @@ module.exports = {
             });
         });
     },
+=======
+                if (error) reject(error);
+                else resolve(value.insertId);
+                connection.end();
+            });
+        });
+    }
+>>>>>>> edf54e23a784bdc5e8dec26d80b59a5745ec82a1
 };
 
 
