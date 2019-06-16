@@ -1,6 +1,7 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
 var moment = require('moment');
+var passport = require('passport');
 var userModel = require('../models/user.model');
 
 var router = express.Router();
@@ -44,7 +45,28 @@ router.post('/register', (req, res, next) => {
 })
 
 router.get('/login', (req, res, next) => {
-    res.send('login page');
+    res.render('vwAccount/login', { layout: false });
+})
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err)
+            return next(err);
+
+        if (!user) {
+            return res.render('vwAccount/login', {
+                layout: false,
+                err_message: info.message
+            })
+        }
+
+        req.logIn(user, err => {
+            if (err)
+                return next(err);
+
+            return res.redirect('/');
+        });
+    })(req, res, next);
 })
 
 module.exports = router;
