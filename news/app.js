@@ -1,14 +1,5 @@
 var express = require('express');
-<<<<<<< HEAD
 var morgan = require('morgan');
-=======
-var exphbs = require('express-handlebars');
-var hbs_sections = require('express-handlebars-sections')
-var post = require('./models/post.model');
-var hbs_sections = require('express-handlebars-sections');
-var morgan = require('morgan');
-var moment = require('moment');
->>>>>>> dc427e1ff0d6630ef81cdf22fc0b534c27944a56
 
 var app = express();
 
