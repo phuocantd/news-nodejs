@@ -6,8 +6,8 @@ var router = express.Router();
 
 router.get('/:id', (req, res) => {
     var id = req.params.id;
-    var querry = post.content(id);
-    querry.then(rows => {
+    var query = post.content(id);
+    query.then(rows => {
         // console.log(rows);
         // console.log(moment(rows[0].PublishedDate).add(1, 'day').format('LLL'));
         if (rows.length > 0) {

@@ -9,7 +9,7 @@ var createConnection = () => {
 };
 
 module.exports = {
-    loadContent: sql => {
+    loadPostContent: sql => {
         return new Promise((resolve, reject) => {
             var connection = createConnection();
             connection.connect();
@@ -19,8 +19,29 @@ module.exports = {
                 connection.end();
             });
         });
-    }
+    },
+    // loadPostInfo: () => {
+    //     let info = async () => {
+    //         try {
+    //             // let news = await 
+    //         } catch (e) {
+
+    //         }
+    //         return new Promise((resolve, reject) => {
+
+    //         });
+    //     }
+    // }
 };
 
-
-
+// function queryToDatabase(sql) {
+//     var connection = createConnection();
+//     connection.connect();
+//     connection.query(sql, (error, results, fields) => {
+//         if (error) return (error);
+//         else {
+//             return (results);
+//             connection.end();
+//         }
+//     });
+// }
