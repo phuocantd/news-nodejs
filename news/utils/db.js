@@ -4,15 +4,13 @@ var createConnection = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: '12345',
+        password: 'Tintin579314',
         database: 'DemoDB'
     });
 };
 
-
-
 module.exports = {
-    loadContent: sql => {
+    loadPost: sql => {
         return new Promise((resolve, reject) => {
             var connection = createConnection();
             connection.connect();
@@ -75,5 +73,14 @@ module.exports = {
     },
 };
 
-
-
+// function queryToDatabase(sql) {
+//     var connection = createConnection();
+//     connection.connect();
+//     connection.query(sql, (error, results, fields) => {
+//         if (error) return (error);
+//         else {
+//             return (results);
+//             connection.end();
+//         }
+//     });
+// }
