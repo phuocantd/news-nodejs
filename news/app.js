@@ -1,6 +1,4 @@
 var express = require('express');
-var exphbs = require('express-handlebars');
-var hbs_sections = require('express-handlebars-sections')
 var morgan = require('morgan');
 
 var app = express();
@@ -14,17 +12,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-app.engine('hbs', exphbs({
-  defaultLayout: 'main.hbs',
-  layoutsDir: 'views/_layouts',
-  helpers: {
-    format: val => {
-      return numeral(val).format('0,0');
-    },
-    section: hbs_sections()
-  }
-}));
-app.set('view engine', 'hbs');
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
 
 app.use('/', require('./routes/homepage.route'));
 app.post('/', (req, res, next) => {
@@ -35,6 +25,8 @@ app.post('/', (req, res, next) => {
 });
 
 app.use(express.static('publics'));
+// app.use('/post/example', require('./routes/admin/post.route'));
+app.use('/account', require('./routes/account.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
 app.use('/writter/writePost', require('./routes/writePost.route'));
