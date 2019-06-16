@@ -1,46 +1,28 @@
-<div class="post-picture">
-    <img src="/post_pictures/{{singleContent.PostId}}/main.jpg" alt="ERROR" title="{{singleContent.Title}}">
-</div>
 <div class="container px-5">
     <!-- News into categories -->
     <div class="row my-4">
-        <!-- Post content -->
-        <div class="col-8 pl-0 post-content">
-            {{!-- Header - Description - Tags --}}
-            <h1>
-                <strong>
-                    {{singleContent.Title}}
-                </strong>
-            </h1>
-            <h4>
-                {{singleContent.Description}}
-            </h4>
-            <div class="post-info text-secondary d-flex my-4">
-                <div class="writter mr-3">
-                    <i class="fas fa-user-edit"></i>
-                    <span>{{singleContent.Name}}</span>
+        <!-- Search result -->
+        <div class="col-8">
+            {{#each this.results}}
+            <a href="/post/{{PostId}}" class="card mb-3 shadow">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/post_pictures/{{PostId}}/main.jpg" alt="ERROR"
+                            title="{{Title}}" style="width: 100%; height: 100%">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{Title}}</h5>
+                            <p class="card-text">{{Description}}</p>
+                            {{!-- <small class="card-text"><small class="text-muted">Tags</small></small> --}}
+                            <p class="card-text"><small class="text-muted">{{PublishedDate}}</small></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="post-date mr-3">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>{{{time}}}</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-tag"></i>
-                    {{#each this.multipleContent}}
-                    <a class="mr-2 text-secondary" href="#">{{{TagName}}}</a>
-                    {{/each}}
-                </div>
-            </div>
-
-            {{{singleContent.Content}}}
-
-            <!-- Facebook like & share buttons -->
-            <div class="fb-like" data-href="https://phuocantd.github.io/news/post/" data-width="" data-layout="standard"
-                data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-            <!-- Facebook comments -->
-            <div class="fb-comments" data-href="https://phuocantd.github.io/news/" data-width="" data-numposts="5">
-            </div>
+            </a>
+            {{/each}}
         </div>
+
         {{!-- Right panel --}}
         <div class="col-4 pl-0">
             <div class="sticky-top" style="top: 80px; z-index: 100">
@@ -81,10 +63,3 @@
         </div>
     </div>
 </div>
-
-{{#section 'js'}}
-<!-- Facebook plugin -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
-{{/section}}
