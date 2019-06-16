@@ -11,4 +11,7 @@ module.exports = {
         on pu.PostId = ptt.PostId
         WHERE pu.PostId = ${id}`);
     },
+    add: entity =>{
+        return db.add('DemoDB.Posts', entity);
+    }
 };

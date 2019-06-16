@@ -14,18 +14,17 @@
     });
 </script>
 {{/section}}
-
 <div class="container my-5">
     <div class="container-post-info shadow-lg bg-light p-3">
         <form method="POST">
             <div class="form-group">
-                <label>Title <span class="text-danger">*</span></label>
-                <input type="email" class="form-control" placeholder="Title">
+                <label><b>Title:</b></label>
+                <input type="text" class="form-control" name="title" placeholder="Title">
             </div>
             <div class="row form-group">
                 <div class="col form-group">
-                    <label>About</label>
-                    <select class="custom-select">
+                    <label><b>Tags:</b></label>
+                    <select class="custom-select" name="tags">
                         <option selected>News</option>
                         <option>Phones</option>
                         <option>&emsp;iOS</option>
@@ -38,23 +37,22 @@
                         <option>Technology</option>
                     </select>
                 </div>
-                <div class="col form-group">
-                    <label>Tags</label>
-                    <!-- <input name='tags-writrer' class='some_class_name' placeholder='write some tags'
-                    value='css, html, javascript, css' autofocus data-blacklist='.NET,PHP'> -->
-                    <input type="text" class="form-control" placeholder="Ex: Laptops, Phones, ...">
-                </div>
             </div>
             <div class="form-group">
-                <label>Description</label>
-                <textarea rows="3" class="form-control"></textarea>
+                <label><b>Description:</b></label>
+                <textarea rows="3" class="form-control" name="description"></textarea>
             </div>
             <div class="form-group">
-                <label>Header picture</label>
+                <label><b>Header picture:</b></label>
                 <input type="file" class="form-control-file">
             </div>
-            <button id="savePost" type="submit" class="btn btn-primary fixed-bottom">Save</button>
-            <textarea class="form-control" id="postContent"></textarea>
+            <div class="form-group">
+                <label><b>Content:</b></label>
+                <textarea class="form-control" id="postContent" name="content"></textarea>
+            </div> 
+            <div class="form-group">
+                <button id="savePost" type="submit" class="btn btn-primary fixed-bottom">Save</button>
+            </div>   
         </form>
     </div>
 
