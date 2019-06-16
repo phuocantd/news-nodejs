@@ -5,19 +5,11 @@
         <div class="col-2 bg-dark text-light d-flex justify-content-center"><strong>HOT NEWS</strong></div>
         <div id="carouselHotNews" class="col-10 carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="3000">
-                    <a class="text-dark" href="javascript:;">Pixel 3 phones aren't
-                        selling, and it's probably Verizon's fault</a>
-                </div>
+                {{#each this.content}}
                 <div class="carousel-item" data-interval="3000">
-                    <a class="text-dark" href="javascript:;">Google sit-in: Workers protest
-                        alleged
-                        company retaliation after
-                        walkout</a>
+                    <a class="text-dark" href="javascript:;">{{{Title}}}</a>
                 </div>
-                <div class="carousel-item" data-interval="3000">
-                    <a class="text-dark" href="javascript:;">ABC</a>
-                </div>
+                {{/each}}
             </div>
             <a class="carousel-control-prev" href="#carouselHotNews" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -34,16 +26,17 @@
         <div id="bigLeft" class="col pl-0">
             <a href="javascript:;">
                 <figure>
-                    <img src="javascript:;" alt="Error loading image">
+                    <img src="/post_pictures/{{content1.PostId}}/main.jpg" alt="Error loading image"
+                        title="{{content1.Title}}">
                 </figure>
                 <div class="info px-3">
-                    <div class="category bg-dark text-light">Phones</div>
+                    {{!-- <div class="category bg-dark text-light">{{content1.Tag}}</div> --}}
                     <div class="title">
-                        <h3>Apple Patents a New ‘Fusion’ Keyboard Which Combines Touch-Input and Mechanical Typing</h3>
+                        <h3>{{content1.Title}}</h3>
                     </div>
                     <div class="post-info">
-                        <small id="author">WzZzW --</small>
-                        <small id="post-date">Jan 27, 2019</small>
+                        <small id="author">{{content1.Author}} --</small>
+                        <small id="post-date">{{time1}}</small>
                     </div>
                 </div>
             </a>
@@ -52,19 +45,17 @@
             <div id="upRight" class="row">
                 <a href="javascript:;">
                     <figure>
-                        <img src="javascript:;"
-                            alt="Error loading image">
+                        <img src="/post_pictures/{{content2.PostId}}/main.jpg" alt="Error loading image"
+                            title="{{content2.Title}}">
                     </figure>
                     <div class="info px-3">
-                        <div class="category bg-dark text-light">Phones</div>
+                        {{!-- <div class="category bg-dark text-light">Phones</div> --}}
                         <div class="title">
-                            <h5>Pixel 3 phones aren't
-                                selling, and it's probably Verizon's fault
-                            </h5>
+                            <h5>{{content2.Title}}</h5>
                         </div>
                         <div class="post-info">
-                            <small id="author">WzZzW --</small>
-                            <small id="post-date">Feb 10, 2019</small>
+                            <small id="author">{{content2.Author}}</small>
+                            <small id="post-date">{{time2}}</small>
                         </div>
                     </div>
                 </a>
@@ -73,14 +64,13 @@
                 <div id="smallLeft" class="col pl-0">
                     <a href="javascript:;">
                         <figure>
-                            <img src="javascript:;"
-                                alt="Error loading image">
+                            <img src="/post_pictures/{{content3.PostId}}/main.jpg" alt="Error loading image"
+                                title="{{content3.Title}}">
                         </figure>
                         <div class="info px-3">
-                            <div class="category bg-dark text-light">Laptops</div>
+                            {{!-- <div class="category bg-dark text-light">Laptops</div> --}}
                             <div class="title">
-                                <h6>Best gaming laptops 2019: the 10 top gaming laptops we've reviewed
-                                </h6>
+                                <h6>{{content3.Title}}</h6>
                             </div>
                         </div>
                     </a>
@@ -88,14 +78,13 @@
                 <div id="smallRight" class="col pl-0">
                     <a href="javascript:;">
                         <figure>
-                            <img src="javascript:;"
-                                alt="Error loading image">
+                            <img src="/post_pictures/{{content4.PostId}}/main.jpg" alt="Error loading image"
+                                title="{{content4.Title}}">
                         </figure>
                         <div class="info px-3">
-                            <div class="category bg-dark text-light">Technology</div>
+                            {{!-- <div class="category bg-dark text-light">Technology</div> --}}
                             <div class="title">
-                                <h6>Google share price plunges, wiping $70bn off its market value
-                                </h6>
+                                <h6>{{content4.Title}}</h6>
                             </div>
                         </div>
                     </a>
@@ -117,31 +106,15 @@
                         <li data-target="#news-content-carousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <a href="javascript:;" class="carousel-item active"
-                            data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Tổng thống Venezuela thể hiện tình đoàn kết với tướng lĩnh</h5>
-                                <p>Tổng thống Venezuela Nicolas Maduro và các quan chức quân sự chủ chốt hôm 2/5 đã có
-                                    màn thể hiện tình đoàn kết trên truyền...</p>
-                            </div>
-                        </a>
+                        {{#each this.newsContent}}
                         <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
+                            <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>China is stealing tech to rapidly modernize its military, Pentagon warns</h5>
-                                <p>(CNN)China is continuing to modernize its armed forces in order to transform its
-                                    military into a major global power ...</p>
+                                <h5>{{Title}}</h5>
+                                <p>{{Description}}</p>
                             </div>
                         </a>
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Trump admin seeking to get money to Venezuela's Guaido</h5>
-                                <p>Washington (CNN)The Trump administration is looking for ways to financially bolster
-                                    Venezuelan opposition leader Juan Guaido, ...</p>
-                            </div>
-                        </a>
+                        {{/each}}
                     </div>
                     <a class="carousel-control-prev" href="#news-content-carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -164,31 +137,15 @@
                         <li data-target="#phones-content-carousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <a href="javascript:;" class="carousel-item active"
-                            data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>New iPhone 11 release date, price, news and leaks</h5>
-                                <p>The iPhone 11 release date is likely in September, but Apple is already rumored to be
-                                    testing out several new iPhone 2019 ...</p>
-                            </div>
-                        </a>
+                        {{#each this.phoneContent}}
                         <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
+                            <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>iPhone SE 2 release date, price & specs rumours</h5>
-                                <p>We round up the latest leaks and rumours about the iPhone SE 2's release date, price,
-                                    tech specs, design, and new features ...</p>
+                                <h5>{{Title}}</h5>
+                                <p>{{Description}}</p>
                             </div>
                         </a>
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>iOS 13 release date & new features rumours</h5>
-                                <p>When will Apple release the next version of iOS for iPhone and iPad, and what new
-                                    features will it bring? We round up the iOS 13 leaks and rumours
-                            </div>
-                        </a>
+                        {{/each}}
                     </div>
                     <a class="carousel-control-prev" href="#phones-content-carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -211,31 +168,15 @@
                         <li data-target="#laptops-content-carousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <a href="javascript:;" class="carousel-item active"
-                            data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>19 Best Android Games to Play On Your Chromebook</h5>
-                                <p>Now that most new Chromebooks run Android apps via the Google Play store, the gaming
-                                    options for Chrome OS laptops ...</p>
-                            </div>
-                        </a>
+                        {{#each this.laptopContent}}
                         <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
+                            <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Should I Buy a Chromebook? Buying Guide and Advice</h5>
-                                <p>A Chromebook is a laptop of a different breed. Instead of Windows 10 or macOS,
-                                    Chromebooks run Google's Chrome OS ...</p>
+                                <h5>{{Title}}</h5>
+                                <p>{{Description}}</p>
                             </div>
                         </a>
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Best Touch Screen Laptops of 2019</h5>
-                                <p>Whether you're jotting down notes, sketching a masterpiece or just quickly zooming in
-                                    on a photo, touch screens add a lot ...</p>
-                            </div>
-                        </a>
+                        {{/each}}
                     </div>
                     <a class="carousel-control-prev" href="#laptops-content-carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -258,31 +199,15 @@
                         <li data-target="#technology-content-carousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <a href="javascript:;" class="carousel-item active"
-                            data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Tesla’s new safety features really push you to stay in your lane</h5>
-                                <p>Tesla has introduced a pair of new safety features for its cars, which are designed
-                                    to stop you from drifting out of your lane...</p>
-                            </div>
-                        </a>
+                        {{#each this.techContent}}
                         <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
+                            <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Microsoft unveils HoloLens 2 developer edition for $3,500</h5>
-                                <p>Microsoft is launching a developer edition of the company’s HoloLens 2 headset today.
-                                    Priced at $3,500, it’s the exact same ...</p>
+                                <h5>{{Title}}</h5>
+                                <p>{{Description}}</p>
                             </div>
                         </a>
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
-                            <img src="javascript:;" alt="Error loading image">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Adobe tests doubling the price of its Lightroom and Photoshop plan</h5>
-                                <p>Adobe is testing raising the price for its Creative Cloud Photography plan, taking it
-                                    from $10 / month to $20 / month, as spotted ...</p>
-                            </div>
-                        </a>
+                        {{/each}}
                     </div>
                     <a class="carousel-control-prev" href="#technology-content-carousel" role="button"
                         data-slide="prev">
@@ -298,8 +223,53 @@
             </div>
         </div>
         <div class="col-4 pr-0">
-            {{!-- {% include right_panel.html %} --}}
+            <div class="sticky-top" style="top: 80px; z-index: 100">
+                <div class="connected-info">
+                    <h6 class="underline-seperate">
+                        <span class="px-1">STAY CONNECTED</span>
+                    </h6>
+                    <div class="social-facebook my-3">
+                        <a href="https://facebook.com/" class="row">
+                            <div class="col-2"><i class="fab fa-facebook-f"></i></div>
+                            <div class="col-6"><span>9999 Fans</span></div>
+                            <div class="col-4 text-right"><span><strong>LIKE</strong></span></div>
+                        </a>
+                    </div>
+                    <div class="social-twitter my-3">
+                        <a href="https://twitter.com/" class="row">
+                            <div class="col-2"><i class="fab fa-twitter"></i></div>
+                            <div class="col-6"><span>9999 Followers</span></div>
+                            <div class="col-4 text-right"><span><strong>FOLLOW</strong></span></div>
+                        </a>
+                    </div>
+                    <div class="social-youtube my-3">
+                        <a href="https://www.youtube.com/" class="row">
+                            <div class="col-2"><i class="fab fa-youtube"></i></div>
+                            <div class="col-6"><span>9999 Subscribers</span></div>
+                            <div class="col-4 text-right"><span><strong>SUBSCRIBE</strong></span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="related-news">
+                    <h6 class="underline-seperate">
+                        <span class="px-1">RELATED NEWS</span>
+                    </h6>
+                    
+                    
+                </div>
+            </div>
         </div>
     </div>
-</div> 
+</div>
 
+{{#section 'js'}}
+<script>
+    $(function () {
+        $('#carouselHotNews').find('.carousel-item').first().addClass('active');
+        $('#news-content-carousel').find('.carousel-item').first().addClass('active');
+        $('#phones-content-carousel').find('.carousel-item').first().addClass('active');
+        $('#laptops-content-carousel').find('.carousel-item').first().addClass('active');
+        $('#technology-content-carousel').find('.carousel-item').first().addClass('active');
+    });
+</script>
+{{/section}}
