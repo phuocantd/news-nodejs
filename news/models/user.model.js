@@ -25,19 +25,12 @@ module.exports = {
   update: entity => {
     return db.update('users', 'UserId', entity);
   },
-
-<<<<<<< HEAD
-  delete: id => {
-    return db.delete('users', 'UserId', id);
-  },
-
   users_roles: (UserId, RoleName) => {
-    var query=`select * from Roles r, Users_Roles ur
+    var query = `select * from Roles r, Users_Roles ur
     where r.RoleId = ur.RoleId and r.RoleName = '${RoleName}' and ur.UserId = ${UserId}`;
     console.log(query);
     return db.loadPost(query);
-  }
-=======
+  },
   deleteUserRole: id => {
     return db.load(`delete from Users_Roles where UserId = ${id}`);
   },
@@ -82,5 +75,4 @@ module.exports = {
   addEditorTag: (id, tag) => {
     return db.load(`INSERT INTO DemoDB.Editors_Tags (UserId, TagId) VALUES (${id}, ${tag})`);
   },
->>>>>>> 027e877b2b4bab4cad77d589e3e66089031eac56
 };
