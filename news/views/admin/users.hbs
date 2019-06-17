@@ -1,0 +1,63 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Remove</th>
+                <th scope="col" class="text-center">Add Premium</th>
+                <th scope="col" class="text-center">Add Admin</th>
+                <th scope="col" class="text-center">Add Writer</th>
+                <th scope="col" class="text-center">Add Editor</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        {{#each this.users}}
+        <tbody>
+            <tr>
+                <td scope="row" class="text-center">
+                    <form method="post">
+                        <button type="submit" class="btn  btn-sm btn-outline-danger" formaction="/admin/removeAccount" name="id"
+                            value="{{UserId}}">
+                            <i class="fas fa-times" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </td>
+                <td scope="row" class="text-center">
+                    <form method="post">
+                        <button type="submit" class="btn  btn-sm btn-outline-info" formaction="/admin/addPremium" name="id"
+                            value="{{UserId}}">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </td>
+                <td scope="row" class="text-center">
+                    <form method="post">
+                        <button type="submit" class="btn  btn-sm btn-outline-success" formaction="/admin/addAdmin" name="id"
+                            value="{{UserId}}">
+                            <i class="fas fa-user-shield" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </td>
+                <td scope="row" class="text-center">
+                    <form method="post">
+                        <button type="submit" class="btn  btn-sm btn-outline-primary" formaction="/admin/addWriter" name="id"
+                            value="{{UserId}}">
+                            <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </td>
+                <td scope="row" class="text-center">
+                    <form method="post">
+                        <button type="submit" class="btn  btn-sm btn-outline-warning" formaction="/admin/addEditor" name="id"
+                            value="{{UserId}}">
+                            <i class="fas fa-user-edit" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </td>
+                <th scope="row">{{UserId}}</th>
+                <td scope="row">{{Name}}</td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+</div>

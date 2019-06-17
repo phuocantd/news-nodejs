@@ -10,7 +10,7 @@ var createConnection = () => {
 };
 
 module.exports = {
-    loadPost: sql => {
+    load: sql => {
         return new Promise((resolve, reject) => {
             var connection = createConnection();
             connection.connect();

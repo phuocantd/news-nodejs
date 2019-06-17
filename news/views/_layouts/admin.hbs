@@ -87,22 +87,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/users">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic-1" aria-expanded="false">
                             <i class="menu-icon fas fa-users"></i>
                             <span class="menu-title">Users</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/subscribers">
-                            <i class="menu-icon fas fa-star"></i>
-                            <span class="menu-title">Subscribers</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/editors">
-                            <i class="menu-icon fas fa-user-edit"></i>
-                            <span class="menu-title">Editors</span>
-                        </a>
+                        <div class="collapse" id="ui-basic-1">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="/admin/users/all">All</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin/users/premium">Premium</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin/users/writer">Writer</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin/users/editor">Editor</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin/users/admin">Admin</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>

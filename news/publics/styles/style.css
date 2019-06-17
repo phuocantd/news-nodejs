@@ -42,7 +42,7 @@
     margin-left: 30px;
 }
 
-#writter-btn {
+#writer-btn {
     top: 80px;
     left: 30px;
     display: none;
@@ -671,7 +671,7 @@ body {
     color: #0062cc;
 }
 
-/* Writter mode */
+/* Writer mode */
 
 .container-post-info, .container-post-content {
     margin: 30px;

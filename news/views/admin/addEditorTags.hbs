@@ -1,0 +1,22 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Tag</th>
+        </tr>
+    </thead>
+    {{#each this.tags}}
+    <tbody>
+        <tr>
+            <td scope="row">{{{uid}}}</td>
+            <td class="text-right">
+                <form method="post">
+                    <button type="submit" class="btn btn-outline-success btn-sm"
+                        formaction="/admin/users/editor/{{{uid}}}/tags/add" name="TagId" value="{{TagId}}">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+    {{/each}}
+</table>

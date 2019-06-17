@@ -1,0 +1,28 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Tag</th>
+            <th scope="col" class="text-right">
+                <a class="btn btn-outline-success btn-sm" href="/admin/users/editor/{{{uid}}}/tags/add" role="button">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                    Add Tag
+                </a>
+            </th>
+        </tr>
+    </thead>
+    {{#each this.tags}}
+    <tbody>
+        <tr>
+            <td scope="row">{{TagName}}</td>
+            <td class="text-right">
+                <form method="post">
+                    <button type="submit" class="btn btn-outline-danger btn-sm" formaction="/admin/removeAccount"
+                        name="id" value="{{UserId}}">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+    {{/each}}
+</table>

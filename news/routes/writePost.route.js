@@ -4,7 +4,7 @@ var router = express.Router();
 var writePostModle = require('../models/post.model');
 
 router.get('/', (req, res) => {
-    res.render('writter/index');
+    res.render('writer/index');
 });
 
 router.post('/',(req, res) =>{
