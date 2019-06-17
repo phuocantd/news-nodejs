@@ -3,6 +3,8 @@ var bcrypt = require('bcrypt');
 var moment = require('moment');
 var passport = require('passport');
 var userModel = require('../models/user.model');
+var auth = require('../middlewares/auth');
+var nauth = require('../middlewares/nauth');
 
 var router = express.Router();
 
@@ -17,12 +19,11 @@ router.get('/is-available', (req, res, next) => {
     })
 })
 
-router.get('/register', (req, res, next) => {
+router.get('/register', nauth, (req, res, next) => {
     res.render('vwAccount/register');
 })
 
 router.post('/register', (req, res, next) => {
-    console.log(req.body);
     var saltRounds = 10;
     var hash = bcrypt.hashSync(req.body.password, saltRounds);
     var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -44,7 +45,7 @@ router.post('/register', (req, res, next) => {
     });
 })
 
-router.get('/login', (req, res, next) => {
+router.get('/login', nauth, (req, res, next) => {
     res.render('vwAccount/login', { layout: false });
 })
 
@@ -67,6 +68,16 @@ router.post('/login', (req, res, next) => {
             return res.redirect('/');
         });
     })(req, res, next);
+})
+
+// router.get('/profile', auth, (req, res, next) => {
+//     //res.render('vwAccount/login', { layout: false });
+//     res.send('profile');
+// })
+
+router.post('/logout', auth, (req, res, next) => {
+    req.logOut();
+    res.redirect('/account/login');
 })
 
 module.exports = router;

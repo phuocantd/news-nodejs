@@ -34,20 +34,44 @@
                     <p id="currentDate" class="my-0">Monday, April 22</p>
                 </div>
             </div>
-            <!-- <div class="col- d-flex justify-content-end"></div> -->
-            <div class="col-3">
-                {{!-- <div id="share-social">
-                    <a href="facebook.com"><i class="fab fa-facebook-f mx-2"></i></a>
-                    <a href="twitter.com"><i class="fab fa-twitter mx-2"></i></a>
-                    <a href="youtube.com"><i class="fab fa-youtube mx-2"></i></a>
-                </div> --}}
-                <div id="nav-menu" class="mx-4 d-flex">
-                    <a class="mx-2 text-light" href="javascript:;">Sign in / Join</a>
-                    {{!-- <a class="mx-2 text-light" href="#">Blog</a>
-                    <a class="mx-2 text-light" href="#">Forums</a>
-                    <a class="mx-2 text-light" href="#">Contact</a> --}}
+        </div>
+        <form id="frmSignout" action="/account/logout" method="POST"></form>
+        <ul class="navbar-nav">
+            {{#if isAuthenticated}}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Hi, <b>{{authUser.Name}}</b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/profile/edit">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Edit Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Sign Out
+                    </a>
                 </div>
+            </li>
+            {{else}}
+            <div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/register">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        Regiter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        Sign In
+                    </a>
+                </li>
             </div>
+            {{/if}}
+        </ul>
         </div>
     </header>
 
