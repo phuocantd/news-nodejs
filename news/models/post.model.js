@@ -15,9 +15,22 @@ module.exports = {
         return db.add('DemoDB.Posts', entity);
     },
     draftPost: () => {
-        return db.loadPost(`select PostId, Title, Description, Author, DraftDate from DemoDB.Posts where Posts.State < 4 and Posts.State > 1`);
+        return db.loadPost(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State < 4 and Posts.State > 1`);
     },
     publishedPost: () => {
-        return db.loadPost(`select PostId, Title, Description, Author, DraftDate from DemoDB.Posts where Posts.State = 4`);
-    }
+        return db.loadPost(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State = 4`);
+    },
+    tags: id => {
+        return db.loadPost(`SELECT t.* FROM DemoDB.Tags t, DemoDB.Posts_Tags pt
+        WHERE t.TagId = pt.TagId and pt.PostId = ${id}`);
+    },
+    tags: () => {
+        return db.loadPost(`SELECT * FROM DemoDB.Tags`);
+    },
+    deny: id => {
+        return db.updateState(`update DemoDB.Posts set State = 1 where PostId = ${id}`);
+    },
+    approve: id => {
+        return db.updateState(`update DemoDB.Posts set State = 4 where PostId = ${id}`);
+    },
 };

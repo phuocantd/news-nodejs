@@ -1,0 +1,23 @@
+<div class=" table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Tag Id</th>
+                <th scope="col">Tag Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.tags}}
+            <tr>
+                <th scope="row">{{TagId}}</th>
+                <td>{{TagName}}</td>
+                <td>
+                    <a href="/admin/draft/edit/{{TagId}}" role="button" class="btn btn-primary btn-sm">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

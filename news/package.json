@@ -9,6 +9,7 @@
   "author": "phuocantd <phuocantdgmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",

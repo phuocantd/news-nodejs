@@ -1,6 +1,7 @@
 {{#section 'js'}}
 {{!-- Tinymce --}}
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+<script
+    src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3htpd1xoxxwv98ns0acngt8a5niufcnsuzu50dqj6p5khxz3"></script>
 <script>
     $(function () {
         tinymce.init({
@@ -29,11 +30,15 @@
         });
     });
 </script>
+
+{{!-- Fancybox --}}
+<script src="/path/to/jquery.fancybox.min.js"></script>
 {{/section}}
 
 {{#section 'css'}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css"
     type="text/css">
+<link href="/path/to/jquery.fancybox.min.css" rel="stylesheet">
 {{/section}}
 
 <div class="container mb-5">
@@ -46,18 +51,9 @@
             <div class="row form-group">
                 <div class="col form-group">
                     <label><b>Tags:</b></label>
-                    <select class="custom-select" name="tags">
-                        <option selected>News</option>
-                        <option>Phones</option>
-                        <option>&emsp;iOS</option>
-                        <option>&emsp;Android</option>
-                        <option>Laptops</option>
-                        <option>&emsp;Asus</option>
-                        <option>&emsp;Dell</option>
-                        <option>&emsp;HP</option>
-                        <option>&emsp;MSI</option>
-                        <option>Technology</option>
-                    </select>
+                    {{#each this.tags}}
+                    <span class="badge badge-secondary rounded">{{TagName}}</span>
+                    {{/each}}
                 </div>
             </div>
             <div class="form-group">
@@ -66,15 +62,26 @@
             </div>
             <div class="form-group">
                 <label><b>Header picture:</b></label>
-                <div class="file-loading">
-                    <input id="input-pic" name="input-pic" type="file" multiple>
-                </div>
+                <a class="fancybox" rel="gallery" href="/post_pictures/{{content.PostId}}/main.jpg">
+                    <img src="/post_pictures/{{content.PostId}}/main.jpg" alt="MISSING IMAGE" title="{{content.Title}}">
+                </a>
             </div>
             <div class="form-group">
                 <label><b>Content:</b></label>
-                <textarea readonly class="form-control" id="postContent" name="content"
-                    value="{{{content.Content}}}"></textarea>
+                <textarea class="form-control" id="postContent" name="content">{{{content.Content}}}</textarea>
             </div>
+        </form>
+        <form method="post">
+            <button type="submit" class="btn btn-outline-danger" formaction="/admin/deny" name="id"
+                value="{{content.PostId}}">
+                <i class="fas fa-times" aria-hidden="true"></i>
+                Deny
+            </button>
+            <button type="submit" class="btn btn-success" formaction="/admin/approved" name="id"
+                value="{{content.PostId}}">
+                <i class="fas fa-check" aria-hidden="true"></i>
+                Approved
+            </button>
         </form>
     </div>
 </div>

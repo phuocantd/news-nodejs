@@ -5,7 +5,6 @@
                 <th class="text-center" scope="col">#</th>
                 <th scope="col">PostId</th>
                 <th scope="col">Title</th>
-                <th scope="col">Description</th>
                 <th scope="col">Author</th>
                 <th scope="col">DraftDate</th>
             </tr>
@@ -20,7 +19,19 @@
                 </td>
                 <th scope="row" class="text-center">{{PostId}}</th>
                 <td>{{Title}}</td>
-                <td>{{Description}}</td>
+                <td class="text-center">{{Author}}</td>
+                <td>{{DraftDate}}</td>
+            </tr>
+            {{/each}}
+            {{#each this.publishedPost}}
+            <tr>
+                <td>
+                    <a href="/post/{{PostId}}" role="button" class="btn btn-primary btn-sm">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+                <th scope="row" class="text-center">{{PostId}}</th>
+                <td>{{Title}}</td>
                 <td class="text-center">{{Author}}</td>
                 <td>{{DraftDate}}</td>
             </tr>

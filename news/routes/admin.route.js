@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/draft', (req, res) => {
-    var draftQuery = post.publishedPost();
+    var draftQuery = post.draftPost();
     draftQuery.then(rows => {
-        res.render('admin/draftPost', {
+        res.render('admin/listPost', {
             layout: 'admin.hbs',
             draftPost: rows,
         });
@@ -21,14 +21,62 @@ router.get('/draft', (req, res) => {
     });
 });
 
+router.get('/published', (req, res) => {
+    var publishedQuery = post.publishedPost();
+    publishedQuery.then(rows => {
+        res.render('admin/listPost', {
+            layout: 'admin.hbs',
+            publishedPost: rows,
+        });
+    }).catch(error => {
+        console.log(error);
+    });
+});
+
 router.get('/draft/edit/:id', (req, res) => {
     var id = req.params.id;
-    console.log(id);
     var query = post.content(id);
     query.then(rows => {
-        res.render('admin/edit', {
+        var tagQuery = post.tags(id);
+        tagQuery.then(tagRows => {
+            res.render('admin/edit', {
+                layout: 'admin.hbs',
+                content: rows[0],
+                tags: tagRows,
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+    }).catch(error => {
+        console.log(error);
+    });
+});
+
+router.post('/deny', (req, res) => {
+    var query = post.deny(req.body.id);
+    query.then(id => {
+        res.redirect('/admin/draft');
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+router.post('/approved', (req, res) => {
+    var query = post.approve(req.body.id);
+    query.then(id => {
+        res.redirect('/admin/published');
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+router.get('/tags', (req, res) => {
+    var query = post.tags();
+    query.then(rows => {
+        console.log(rows);
+        res.render('admin/tags', {
             layout: 'admin.hbs',
-            content: rows[0],
+            tags: rows,
         });
     }).catch(error => {
         console.log(error);
