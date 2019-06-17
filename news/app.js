@@ -17,9 +17,10 @@ require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
 require('./middlewares/upload')(app);
 
+app.use(require('./middlewares/auth-locals.mdw'));
+
 app.use('/', require('./routes/homepage.route'));
 app.post('/', (req, res, next) => {
-  // console.log(req.body.textSearch);
   var query = req.body.textSearch;
   var url = '/search?keyword=' + query;
   res.redirect(url);
@@ -28,6 +29,7 @@ app.post('/', (req, res, next) => {
 app.use(express.static('publics'));
 // app.use('/post/example', require('./routes/admin/post.route'));
 app.use('/account', require('./routes/account.route'));
+app.use('/profile', require('./routes/profile.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
 app.use('/writter/writePost', require('./routes/writePost.route'));
