@@ -13,5 +13,11 @@ module.exports = {
     },
     add: entity => {
         return db.add('DemoDB.Posts', entity);
+    },
+    draftPost: () => {
+        return db.loadPost(`select PostId, Title, Description, Author, DraftDate from DemoDB.Posts where Posts.State < 4 and Posts.State > 1`);
+    },
+    publishedPost: () => {
+        return db.loadPost(`select PostId, Title, Description, Author, DraftDate from DemoDB.Posts where Posts.State = 4`);
     }
 };

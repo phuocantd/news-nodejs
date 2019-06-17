@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/upload')(app);
 
 app.use('/', require('./routes/homepage.route'));
 app.post('/', (req, res, next) => {

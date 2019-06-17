@@ -1,0 +1,30 @@
+<div class=" table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">#</th>
+                <th scope="col">PostId</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">DraftDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.draftPost}}
+            <tr>
+                <td>
+                    <a href="/admin/draft/edit/{{PostId}}" role="button" class="btn btn-primary btn-sm">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+                <th scope="row" class="text-center">{{PostId}}</th>
+                <td>{{Title}}</td>
+                <td>{{Description}}</td>
+                <td class="text-center">{{Author}}</td>
+                <td>{{DraftDate}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
