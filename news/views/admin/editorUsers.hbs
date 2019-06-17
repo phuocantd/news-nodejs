@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Remove</th>
+                <th scope="col">Assigned Tag</th>
+                <th scope="col">TagId</th>
+                <th scope="col">Tag</th>
+
+            </tr>
+        </thead>
+        {{#each this.users}}
+        <tbody>
+            <tr>
+                <td scope="col">
+                    <button type="submit" class="btn  btn-sm btn-outline-danger" formaction="/admin/removeEditor"
+                        name="id" value="{{UserId}}">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </td>
+                <td>
+                    <a class="btn  btn-sm btn-outline-info" href="/admin/users/editor/{{UserId}}/tags" role="button">
+                        <i class="fas fa-tags" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <th scope="row">{{UserId}}</th>
+                <td>{{Name}}</td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+</div>

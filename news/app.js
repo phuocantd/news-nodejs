@@ -33,8 +33,13 @@ app.use('/account', require('./routes/account.route'));
 app.use('/profile', require('./routes/profile.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
+<<<<<<< HEAD
 app.use('/writter/writePost', require('./routes/writePost.route'));
 app.use('/admin', auth_admin, require('./routes/admin.route'));
+=======
+app.use('/writer/writePost', require('./routes/writePost.route'));
+app.use('/admin', require('./routes/admin.route'));
+>>>>>>> 027e877b2b4bab4cad77d589e3e66089031eac56
 
 // Handle error
 app.use((req, res, next) => {
