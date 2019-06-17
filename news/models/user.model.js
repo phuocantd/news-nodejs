@@ -23,5 +23,12 @@ module.exports = {
 
   delete: id => {
     return db.delete('users', 'UserId', id);
+  },
+
+  users_roles: (UserId, RoleName) => {
+    var query=`select * from Roles r, Users_Roles ur
+    where r.RoleId = ur.RoleId and r.RoleName = '${RoleName}' and ur.UserId = ${UserId}`;
+    console.log(query);
+    return db.loadPost(query);
   }
 };

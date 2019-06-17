@@ -1,5 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
+var auth_admin=require('./middlewares/auth-admin');
 
 var app = express();
 
@@ -33,7 +34,7 @@ app.use('/profile', require('./routes/profile.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
 app.use('/writter/writePost', require('./routes/writePost.route'));
-app.use('/admin', require('./routes/admin.route'));
+app.use('/admin', auth_admin, require('./routes/admin.route'));
 
 // Handle error
 app.use((req, res, next) => {
