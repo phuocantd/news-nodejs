@@ -7,7 +7,7 @@
             <div class="carousel-inner">
                 {{#each this.content}}
                 <div class="carousel-item" data-interval="3000">
-                    <a class="text-dark" href="javascript:;">{{{Title}}}</a>
+                    <a class="text-dark" href="/post/{{PostId}}">{{{Title}}}</a>
                 </div>
                 {{/each}}
             </div>
@@ -24,7 +24,7 @@
     <!-- News grid -->
     <div id="gridNews" class="row">
         <div id="bigLeft" class="col pl-0">
-            <a href="javascript:;">
+            <a href="/post/{{content1.PostId}}">
                 <figure>
                     <img src="/post_pictures/{{content1.PostId}}/main.jpg" alt="Error loading image"
                         title="{{content1.Title}}">
@@ -43,7 +43,7 @@
         </div>
         <div id="bigRight" class="col px-3">
             <div id="upRight" class="row">
-                <a href="javascript:;">
+                <a href="/post/{{content2.PostId}}">
                     <figure>
                         <img src="/post_pictures/{{content2.PostId}}/main.jpg" alt="Error loading image"
                             title="{{content2.Title}}">
@@ -62,7 +62,7 @@
             </div>
             <div id="downRight" class="row">
                 <div id="smallLeft" class="col pl-0">
-                    <a href="javascript:;">
+                    <a href="/post/{{content3.PostId}}">
                         <figure>
                             <img src="/post_pictures/{{content3.PostId}}/main.jpg" alt="Error loading image"
                                 title="{{content3.Title}}">
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 <div id="smallRight" class="col pl-0">
-                    <a href="javascript:;">
+                    <a href="/post/{{content4.PostId}}">
                         <figure>
                             <img src="/post_pictures/{{content4.PostId}}/main.jpg" alt="Error loading image"
                                 title="{{content4.Title}}">
@@ -107,7 +107,7 @@
                     </ol>
                     <div class="carousel-inner">
                         {{#each this.newsContent}}
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
+                        <a href="/post/{{PostId}}" class="carousel-item" data-interval="4000">
                             <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{Title}}</h5>
@@ -138,7 +138,7 @@
                     </ol>
                     <div class="carousel-inner">
                         {{#each this.phoneContent}}
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
+                        <a href="/post/{{PostId}}" class="carousel-item" data-interval="4000">
                             <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{Title}}</h5>
@@ -169,7 +169,7 @@
                     </ol>
                     <div class="carousel-inner">
                         {{#each this.laptopContent}}
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
+                        <a href="/post/{{PostId}}" class="carousel-item" data-interval="4000">
                             <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{Title}}</h5>
@@ -200,7 +200,7 @@
                     </ol>
                     <div class="carousel-inner">
                         {{#each this.techContent}}
-                        <a href="javascript:;" class="carousel-item" data-interval="4000">
+                        <a href="/post/{{PostId}}" class="carousel-item" data-interval="4000">
                             <img src="/post_pictures/{{PostId}}/main.jpg" alt="Error loading image" title="{{Title}}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{Title}}</h5>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="related-news">
                     <h6 class="underline-seperate">
-                        <span class="px-1">RELATED NEWS</span>
+                        <span class="px-1">TOP NEWS</span>
                     </h6>
                     
                     

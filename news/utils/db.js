@@ -21,21 +21,6 @@ module.exports = {
             });
         });
     },
-    load: sql => {
-        return new Promise((resolve, reject) => {
-            var connection = createConnection();
-            connection.connect();
-            connection.query(sql, (error, results, fields) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(results);
-                }
-                connection.end();
-            });
-        });
-    },
-
     add: (tableName, entity) => {
         return new Promise((resolve, reject) => {
             var sql = `insert into ${tableName} set ?`;

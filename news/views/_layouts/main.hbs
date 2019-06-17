@@ -43,16 +43,16 @@
             <!-- <div class="col- d-flex justify-content-end"></div> -->
             <div class="col-3">
                 <div id="share-social">
-                    <a href="#"><i class="fab fa-facebook-f mx-2"></i></a>
-                    <a href="#"><i class="fab fa-twitter mx-2"></i></a>
-                    <a href="#"><i class="fab fa-youtube mx-2"></i></a>
+                    <a href="facebook.com"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="twitter.com"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="youtube.com"><i class="fab fa-youtube mx-2"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="logo d-flex justify-content-center">
-        <a href="javascript:;">
+        <a href="/">
             <img src="https://demo.tagdiv.com/newspaper/wp-content/uploads/2018/08/logo-header.png"
                 alt="Newspaper WordPress Theme">
         </a>
@@ -60,15 +60,15 @@
     <div id="menu" class="bg-white text-dark shadow p-0 mb-1 bg-white rounded sticky-top">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <button class="btn nav-link bg-white">News</button>
+                <a href="search?keyword=technology" class="btn nav-link bg-white">News</a>
             </li>
             <li class="nav-item">
                 <div class="dropdown">
                     <button class="btn nav-link bg-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Phones</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="javascript:;">Android</a>
-                        <a class="dropdown-item" href="javascript:;">iOS</a>
+                        <a class="dropdown-item" href="search?keyword=android">Android</a>
+                        <a class="dropdown-item" href="search?keyword=ios">iOS</a>
                     </div>
                 </div>
             </li>
@@ -77,24 +77,22 @@
                     <button class="btn nav-link bg-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Laptops</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="javascript:;">Asus</a>
-                        <a class="dropdown-item" href="javascript:;">Dell</a>
-                        <a class="dropdown-item" href="javascript:;">HP</a>
-                        <a class="dropdown-item" href="javascript:;">MSI</a>
+                        <a class="dropdown-item" href="search?keyword=asus">Asus</a>
+                        <a class="dropdown-item" href="search?keyword=dell">Dell</a>
+                        <a class="dropdown-item" href="search?keyword=hp">HP</a>
+                        <a class="dropdown-item" href="search?keyword=msi">MSI</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <div class="dropdown">
-                    <button class="btn nav-link bg-white">Technology</button>
-                </div>
+                <a href="search?keyword=technology" class="btn nav-link bg-white">Technology</a>
             </li>
             <li class="nav-item search-bar">
-                <form action="submit">
+                <form action="/" method="POST" id="searchForm">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Search" name="textSearch">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">
+                            <button type="submit" class="btn btn-outline-secondary" type="button">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -112,7 +110,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="logo">
-                    <a href="javascript:;">
+                    <a href="/">
                         <img src="https://demo.tagdiv.com/newspaper/wp-content/uploads/2018/08/logo-header.png"
                             alt="Newspaper WordPress Theme">
                     </a>
