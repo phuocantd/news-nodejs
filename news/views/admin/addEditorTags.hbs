@@ -7,11 +7,11 @@
     {{#each this.tags}}
     <tbody>
         <tr>
-            <td scope="row">{{{uid}}}</td>
+            <td scope="row">{{TagName}}</td>
             <td class="text-right">
                 <form method="post">
                     <button type="submit" class="btn btn-outline-success btn-sm"
-                        formaction="/admin/users/editor/{{{uid}}}/tags/add" name="TagId" value="{{TagId}}">
+                        formaction="/admin/users/editor/{{UserId}}/tags/add" name="TagId" value="{{TagId}}">
                         <i class="fas fa-plus" aria-hidden="true"></i>
                     </button>
                 </form>

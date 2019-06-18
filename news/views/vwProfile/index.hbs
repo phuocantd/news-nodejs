@@ -74,47 +74,50 @@
 </script>
 {{/section}}
 
-<form novalidate action="update" method="POST" id="registerForm">
-    <div class="card shadow">
-        <h3 class="card-header">
-            <strong>Edit profile</strong>
-        </h3>
-        <div class="card-body">
-            <h5 class="mb-3">Account</h5>
-            <div class="form-group">
-                <label for="txtUsername">Your Username</label>
-                <input readonly value="{{authUser.UserName}}" type="text" class="form-control" id="txtUsername"
-                    name="username" autofocus>
-            </div>
+<form class="container my-5">
+    <form novalidate action="update" method="POST" id="registerForm">
+        <div class="card shadow">
+            <h3 class="card-header">
+                <strong>Edit profile</strong>
+            </h3>
+            <div class="card-body">
+                <h5 class="mb-3">Account</h5>
+                <div class="form-group">
+                    <label for="txtUsername">Your Username</label>
+                    <input readonly value="{{authUser.UserName}}" type="text" class="form-control" id="txtUsername"
+                        name="username" autofocus>
+                </div>
 
-            <hr class="mb-4">
-            <h5 class="mb-3">Information</h5>
-            <div class="form-group">
-                <label for="txtName">Name</label>
-                <input autofocus value="{{authUser.Name}}" type="text" class="form-control" id="txtName" name="name">
+                <hr class="mb-4">
+                <h5 class="mb-3">Information</h5>
+                <div class="form-group">
+                    <label for="txtName">Name</label>
+                    <input autofocus value="{{authUser.Name}}" type="text" class="form-control" id="txtName"
+                        name="name">
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail">Email</label>
+                    <input value="{{authUser.Email}}" type="text" class="form-control" id="txtEmail" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="txtAddress">Address</label>
+                    <input value="{{authUser.Address}}" type="text" class="form-control" id="txtAddress" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="txtPhone">Phone</label>
+                    <input value="{{authUser.Phone}}" type="text" class="form-control" id="txtPhone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="txtDOB">Date of birth</label>
+                    <input value="{{dob}}" type="text" class="form-control" id="txtDOB" name="dob">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="txtEmail">Email</label>
-                <input value="{{authUser.Email}}" type="text" class="form-control" id="txtEmail" name="email">
-            </div>
-            <div class="form-group">
-                <label for="txtAddress">Address</label>
-                <input value="{{authUser.Address}}" type="text" class="form-control" id="txtAddress" name="address">
-            </div>
-            <div class="form-group">
-                <label for="txtPhone">Phone</label>
-                <input value="{{authUser.Phone}}" type="text" class="form-control" id="txtPhone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="txtDOB">Date of birth</label>
-                <input value="{{dob}}" type="text" class="form-control" id="txtDOB" name="dob">
+            <div class="card-footer text-right">
+                <button type="submit" class="btn btn-lg btn-success btn-block">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    Update
+                </button>
             </div>
         </div>
-        <div class="card-footer text-right">
-            <button type="submit" class="btn btn-lg btn-success btn-block">
-                <i class="fa fa-check" aria-hidden="true"></i>
-                Update
-            </button>
-        </div>
-    </div>
+    </form>
 </form>

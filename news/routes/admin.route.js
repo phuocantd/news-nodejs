@@ -234,7 +234,6 @@ router.get('/users/editor/:id/tags/add', (req, res) => {
         res.render('admin/addEditorTags', {
             layout: 'admin.hbs',
             tags: rows,
-            uid: req.params.id,
         })
     }).catch(err => {
         console.log(err);
