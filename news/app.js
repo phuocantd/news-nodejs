@@ -33,7 +33,7 @@ app.use('/account', require('./routes/account.route'));
 app.use('/profile', require('./routes/profile.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
-app.use('/writter/writePost', require('./routes/writePost.route'));
+app.use('/writer', require('./routes/writePost.route'));
 app.use('/admin', auth_admin, require('./routes/admin.route'));
 
 // Handle error

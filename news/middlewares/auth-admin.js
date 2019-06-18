@@ -7,9 +7,9 @@ module.exports = (req, res, next) => {
             if (rows.length > 0) {
                 next();
             }
-            else res.redirect('/');
+            else res.redirect('/account/login');
         })
     } else {
-        res.redirect('/');
+        res.redirect('/account/login');
     }
 }

@@ -1,6 +1,7 @@
 {{#section 'js'}}
 {{!-- Tinymce --}}
-<script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3htpd1xoxxwv98ns0acngt8a5niufcnsuzu50dqj6p5khxz3"></script>
+<script
+    src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3htpd1xoxxwv98ns0acngt8a5niufcnsuzu50dqj6p5khxz3"></script>
 <script>
     $(function () {
         tinymce.init({
@@ -29,55 +30,51 @@
         });
     });
 </script>
+
+{{!-- Fancybox --}}
+<script src="/path/to/jquery.fancybox.min.js"></script>
 {{/section}}
 
 {{#section 'css'}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css"
     type="text/css">
+<link href="/path/to/jquery.fancybox.min.css" rel="stylesheet">
 {{/section}}
 
-<div class="container my-5">
+<div class="container mb-5">
     <div class="container-post-info shadow-lg bg-light p-3">
         <form method="POST">
             <div class="form-group">
                 <label><b>Title:</b></label>
-                <input type="text" class="form-control" name="title" placeholder="Title">
+                <input type="text" class="form-control" name="title" value="{{{content.Title}}}">
             </div>
             <div class="row form-group">
                 <div class="col form-group">
                     <label><b>Tags:</b></label>
-                    <select class="custom-select" name="tags">
-                        <option selected>News</option>
-                        <option>Phones</option>
-                        <option>&emsp;iOS</option>
-                        <option>&emsp;Android</option>
-                        <option>Laptops</option>
-                        <option>&emsp;Asus</option>
-                        <option>&emsp;Dell</option>
-                        <option>&emsp;HP</option>
-                        <option>&emsp;MSI</option>
-                        <option>Technology</option>
-                    </select>
+                    {{#each this.tags}}
+                    <span class="badge badge-secondary rounded">{{TagName}}</span>
+                    {{/each}}
                 </div>
             </div>
             <div class="form-group">
                 <label><b>Description:</b></label>
-                <textarea rows="3" class="form-control" name="description"></textarea>
+                <textarea rows="3" class="form-control" name="description">{{{content.Description}}}</textarea>
             </div>
             <div class="form-group">
                 <label><b>Header picture:</b></label>
-                <div class="file-loading">
-                    <input id="input-pic" name="input-pic" type="file" multiple>
-                </div>
+                <a class="fancybox" rel="gallery" href="/post_pictures/{{content.PostId}}/main.jpg">
+                    <img src="/post_pictures/{{content.PostId}}/main.jpg" alt="MISSING IMAGE" title="{{content.Title}}">
+                </a>
             </div>
             <div class="form-group">
                 <label><b>Content:</b></label>
-                <textarea class="form-control" id="postContent" name="content"></textarea>
+                <textarea class="form-control" id="postContent" name="content">{{{content.Content}}}</textarea>
             </div>
-            <div class="form-group">
-                <button id="savePost" type="submit" class="btn btn-primary fixed-bottom">Save</button>
-            </div>
+            <button type="submit" class="btn btn-outline-success"
+                formaction="/writer/{{{uid}}}/edit/{{{content.PostId}}}" name="id" value="{{content.PostId}}">
+                <i class="fas fa-check" aria-hidden="true"></i>
+                Update
+            </button>
         </form>
     </div>
-
 </div>
