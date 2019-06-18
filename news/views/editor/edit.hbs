@@ -1,0 +1,87 @@
+{{#section 'js'}}
+{{!-- Tinymce --}}
+<script
+    src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3htpd1xoxxwv98ns0acngt8a5niufcnsuzu50dqj6p5khxz3"></script>
+<script>
+    $(function () {
+        tinymce.init({
+            selector: '#postContent',
+            height: 500,
+            menubar: false,
+            plugins: 'paste image link autolink lists table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist', 'forecolor backcolor', 'table link image media',
+            ]
+        });
+    });
+</script>
+
+{{!-- Bootstrap file input --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fas/theme.min.js"></script>
+<script>
+    $(function () {
+        $('#input-pic').fileinput({
+            theme: 'fas',
+            dropZoneEnabled: false,
+            allowedFileExtensions: ['png', 'jpg', 'gif'],
+            uploadUrl: '/writer/writePost',
+            uploadAsync: false,
+        });
+    });
+</script>
+
+{{!-- Fancybox --}}
+<script src="/path/to/jquery.fancybox.min.js"></script>
+{{/section}}
+
+{{#section 'css'}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css"
+    type="text/css">
+<link href="/path/to/jquery.fancybox.min.css" rel="stylesheet">
+{{/section}}
+
+<div class="container mb-5">
+    <div class="container-post-info shadow-lg bg-light p-3">
+        <form method="POST">
+            <div class="form-group">
+                <label><b>Title:</b></label>
+                <input readonly type="text" class="form-control" name="title" value="{{{content.Title}}}">
+            </div>
+            <div class="row form-group">
+                <div class="col form-group">
+                    <label><b>Tags:</b></label>
+                    {{#each this.tags}}
+                    <span class="badge badge-secondary rounded">{{TagName}}</span>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label><b>Description:</b></label>
+                <textarea readonly rows="3" class="form-control" name="description">{{{content.Description}}}</textarea>
+            </div>
+            <div class="form-group">
+                <label><b>Header picture:</b></label>
+                <a class="fancybox" rel="gallery" href="/post_pictures/{{content.PostId}}/main.jpg">
+                    <img src="/post_pictures/{{content.PostId}}/main.jpg" alt="MISSING IMAGE" title="{{content.Title}}">
+                </a>
+            </div>
+            <div class="form-group">
+                <label><b>Content:</b></label>
+                <textarea readonly class="form-control" id="postContent" name="content">{{{content.Content}}}</textarea>
+            </div>
+            <form method="post">
+                <button type="submit" class="btn btn-outline-danger"
+                    formaction="/editor/{{{uid}}}/deny/{{{content.PostId}}}" name="id" value="{{content.PostId}}">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                    Deny
+                </button>
+                <button type="submit" class="btn btn-success"
+                    formaction="/editor/{{{uid}}}/approve/{{{content.PostId}}}" name="id" value="{{content.PostId}}">
+                    <i class="fas fa-check" aria-hidden="true"></i>
+                    Approved
+                </button>
+            </form>
+        </form>
+    </div>
+</div>

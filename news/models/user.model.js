@@ -25,12 +25,17 @@ module.exports = {
   update: entity => {
     return db.update('users', 'UserId', entity);
   },
+
   users_roles: (UserId, RoleName) => {
     var query = `select * from Roles r, Users_Roles ur
     where r.RoleId = ur.RoleId and r.RoleName = '${RoleName}' and ur.UserId = ${UserId}`;
-    console.log(query);
     return db.load(query);
   },
+
+  deleteUserPost: id => {
+    return db.load(`delete from Posts where Author = ${id}`);
+  },
+
   deleteUserRole: id => {
     return db.load(`delete from Users_Roles where UserId = ${id}`);
   },
@@ -74,5 +79,13 @@ module.exports = {
 
   addEditorTag: (id, tag) => {
     return db.load(`INSERT INTO DemoDB.Editors_Tags (UserId, TagId) VALUES (${id}, ${tag})`);
+  },
+
+  addEditorDeniedPost: (id1, id2, time) =>{
+    return db.load(`INSERT INTO DemoDB.Editors_Posts VALUES (${id1}, ${id2}, 1, time)`);
+  },
+
+  addEditorApprovedPost: (id1, id2, time) =>{
+    return db.load(`INSERT INTO DemoDB.Editors_Posts VALUES (${id1}, ${id2}, 4, time)`);
   },
 };

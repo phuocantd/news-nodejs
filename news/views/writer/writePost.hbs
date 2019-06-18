@@ -1,0 +1,83 @@
+{{#section 'js'}}
+{{!-- Tinymce --}}
+<script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3htpd1xoxxwv98ns0acngt8a5niufcnsuzu50dqj6p5khxz3"></script>
+<script>
+    $(function () {
+        tinymce.init({
+            selector: '#postContent',
+            height: 500,
+            menubar: false,
+            plugins: 'paste image link autolink lists table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist', 'forecolor backcolor', 'table link image media',
+            ]
+        });
+    });
+</script>
+
+{{!-- Bootstrap file input --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fas/theme.min.js"></script>
+<script>
+    $(function () {
+        $('#input-pic').fileinput({
+            theme: 'fas',
+            dropZoneEnabled: false,
+            allowedFileExtensions: ['png', 'jpg', 'gif'],
+            uploadUrl: '/writer/writePost',
+            uploadAsync: false,
+        });
+    });
+</script>
+{{/section}}
+
+{{#section 'css'}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css"
+    type="text/css">
+{{/section}}
+
+<div class="container my-5">
+    <div class="container-post-info shadow-lg bg-light p-3">
+        <form method="POST">
+            <div class="form-group">
+                <label><b>Title:</b></label>
+                <input type="text" class="form-control" name="title" placeholder="Title">
+            </div>
+            <div class="row form-group">
+                <div class="col form-group">
+                    <label><b>Tags:</b></label>
+                    <select class="custom-select" name="tags" size="10" multiple>
+                        <option value="1" selected>News</option>
+                        <option value="2">Phones</option>
+                        <option value="3">&emsp;iOS</option>
+                        <option value="4">&emsp;Android</option>
+                        <option value="5">Laptops</option>
+                        <option value="6">&emsp;Asus</option>
+                        <option value="7">&emsp;Dell</option>
+                        <option value="8">&emsp;HP</option>
+                        <option value="9">&emsp;MSI</option>
+                        <option value="10">Technology</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><b>Description:</b></label>
+                <textarea rows="3" class="form-control" name="description"></textarea>
+            </div>
+            {{!-- <div class="form-group">
+                <label><b>Header picture:</b></label>
+                <div class="file-loading">
+                    <input id="input-pic" name="input-pic" type="file" multiple>
+                </div>
+            </div> --}}
+            <div class="form-group">
+                <label><b>Content:</b></label>
+                <textarea class="form-control" id="postContent" name="content"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="savePost" type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+
+</div>
