@@ -4,11 +4,7 @@ var createConnection = () => {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-<<<<<<< HEAD
-        password: '1234',
-=======
-        password: '12345',
->>>>>>> 85b5af63027d3e5723c558d0364b1e123354bccf
+        password: 'Tintin579314',
         database: 'DemoDB'
     });
 };

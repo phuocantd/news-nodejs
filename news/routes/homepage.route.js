@@ -25,14 +25,14 @@ router.get('/', (req, res) => {
                                 techContent: (rows5),
                                 content1: (rows1[0]),
                                 time1: moment(rows1[0].PublishedDate).add(1, 'day').format('LLL'),
-                                content2: (rows1[0]),
-                                time2: moment(rows1[0].PublishedDate).add(1, 'day').format('LLL'),
-                                content3: (rows1[1]),
-                                time3: moment(rows1[1].PublishedDate).add(1, 'day').format('LLL'),
-                                content4: (rows1[1]),
-                                time4: moment(rows1[1].PublishedDate).add(1, 'day').format('LLL'),
-                                content5: (rows1[1]),
-                                time5: moment(rows1[1].PublishedDate).add(1, 'day').format('LLL'),
+                                content2: (rows1[1]),
+                                time2: moment(rows1[1].PublishedDate).add(1, 'day').format('LLL'),
+                                content3: (rows1[2]),
+                                time3: moment(rows1[2].PublishedDate).add(1, 'day').format('LLL'),
+                                content4: (rows1[3]),
+                                time4: moment(rows1[3].PublishedDate).add(1, 'day').format('LLL'),
+                                content5: (rows1[4]),
+                                time5: moment(rows1[4].PublishedDate).add(1, 'day').format('LLL'),
                             });
                         }
                     }).catch(error => {

@@ -29,7 +29,7 @@ module.exports = {
     var query = `select * from Roles r, Users_Roles ur
     where r.RoleId = ur.RoleId and r.RoleName = '${RoleName}' and ur.UserId = ${UserId}`;
     console.log(query);
-    return db.loadPost(query);
+    return db.load(query);
   },
   deleteUserRole: id => {
     return db.load(`delete from Users_Roles where UserId = ${id}`);
@@ -65,11 +65,11 @@ module.exports = {
   },
 
   loadEditorAddTag: id => {
-    return db.load(`SELECT t.* from Tags t
+    return db.load(`SELECT t.*, u1.UserId from Tags t, Users u1
     WHERE t.TagId NOT IN (SELECT ett.TagId FROM DemoDB.Users u ,
     (select et.*, t1.TagName from DemoDB.Editors_Tags et, Tags t1
     WHERE et.TagId = t1.TagId) ett
-    WHERE u.UserId = ett.UserId and u.UserId = ${id})`);
+    WHERE u.UserId = ett.UserId and u.UserId = ${id}) and u1.UserId = ${id}`);
   },
 
   addEditorTag: (id, tag) => {
