@@ -1,17 +1,21 @@
 var express = require('express');
 var moment = require('moment');
 var userModel = require('../models/user.model');
-var auth = require('../middlewares/auth');
+var auth_premium = require('../middlewares/auth-premium');
 
 
 var router = express.Router();
 
-router.get('/', auth, (req, res, next) => {
+router.get('/', auth_premium, (req, res, next) => {
     res.render('vwProfile/index');
 })
 
-router.get('/edit', auth, (req, res, next) => {
+router.get('/edit', auth_premium, (req, res, next) => {
     res.render('vwProfile/index');
+})
+
+router.get('/non-premium',(req,res,next)=>{
+    res.render('vwProfile/non-premium');
 })
 
 router.post('/update', (req, res, next) => {

@@ -34,6 +34,16 @@
                     <p id="currentDate" class="my-0">Monday, April 22</p>
                 </div>
             </div>
+            {{#if isAdmin}}
+            <div>
+                <a href="/admin">Admin</a>
+            </div>
+            {{/if}}
+            {{#if isWriter}}
+            <div class="ml-5">
+                <a href="/writter/writePost">Writer</a>
+            </div>
+            {{/if}}
             <div class="col-4 d-flex justify-content-end">
                 <form id="frmSignout" action="/account/logout" method="POST"></form>
                 <ul class="navbar-nav">
