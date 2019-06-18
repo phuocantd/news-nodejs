@@ -34,6 +34,7 @@ app.use('/profile', require('./routes/profile.route'));
 app.use('/post', require('./routes/post.route'));
 app.use('/search', require('./routes/search.route'));
 app.use('/writer', require('./routes/writePost.route'));
+app.use('/editor', require('./routes/edit.route'));
 app.use('/admin', auth_admin, require('./routes/admin.route'));
 
 // Handle error

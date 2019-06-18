@@ -80,4 +80,12 @@ module.exports = {
   addEditorTag: (id, tag) => {
     return db.load(`INSERT INTO DemoDB.Editors_Tags (UserId, TagId) VALUES (${id}, ${tag})`);
   },
+
+  addEditorDeniedPost: (id1, id2, time) =>{
+    return db.load(`INSERT INTO DemoDB.Editors_Posts VALUES (${id1}, ${id2}, 1, time)`);
+  },
+
+  addEditorApprovedPost: (id1, id2, time) =>{
+    return db.load(`INSERT INTO DemoDB.Editors_Posts VALUES (${id1}, ${id2}, 4, time)`);
+  },
 };

@@ -32,6 +32,14 @@ module.exports = {
     draftPostId: id => {
         return db.load(`select PostId, Title, Author, DraftDate from DemoDB.Posts where State < 4 and State > 1 and Author = ${id}`);
     },
+    
+    draftPostEditor: id => {
+        return db.load(`select p.PostId, p.Title, p.Author, p.DraftDate, u.UserId
+        from DemoDB.Posts p, DemoDB.Posts_Tags pt, DemoDB.Users u
+        where p.PostId = pt.PostId 
+        and pt.TagId in (select TagId from Editors_Tags
+        where UserId = ${id}) and p.State = 2 and u.UserId = ${id}`);
+    },
 
     publishedPost: () => {
         return db.load(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State = 4`);
@@ -40,9 +48,27 @@ module.exports = {
     publishedPostId: id => {
         return db.load(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State = 4 and Author = ${id}`);
     },
+    
+    publishedPostEditor: id => {
+        return db.load(`select p.PostId, p.Title, p.Author, p.DraftDate 
+        from DemoDB.Posts p, DemoDB.Posts_Tags pt
+        where p.PostId = pt.PostId 
+        and pt.TagId in (select TagId from Editors_Tags
+        where UserId = ${id}) and p.State = 4
+        and p.PostId in (SELECT et.PostId FROM DemoDB.Editors_Posts et where et.UserId = ${id})`);
+    },
 
     deniedPostId: id => {
         return db.load(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State = 1 and Author = ${id}`);
+    },
+
+    deniedPostEditor: id => {
+        return db.load(`select p.PostId, p.Title, p.Author, p.DraftDate 
+        from DemoDB.Posts p, DemoDB.Posts_Tags pt
+        where p.PostId = pt.PostId 
+        and pt.TagId in (select TagId from Editors_Tags
+        where UserId = ${id}) and p.State = 1
+        and p.PostId in (SELECT et.PostId FROM DemoDB.Editors_Posts et where et.UserId = ${id})`);
     },
 
     tagsId: id => {
