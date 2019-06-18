@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var auth_admin=require('./middlewares/auth-admin');
+var auth_writter=require('./middlewares/auth-writter');
 
 var app = express();
 

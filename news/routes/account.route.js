@@ -5,6 +5,7 @@ var passport = require('passport');
 var userModel = require('../models/user.model');
 var auth = require('../middlewares/auth');
 var nauth = require('../middlewares/nauth');
+var request = require('request');
 
 var router = express.Router();
 
@@ -24,24 +25,46 @@ router.get('/register', nauth, (req, res, next) => {
 })
 
 router.post('/register', (req, res, next) => {
-    var saltRounds = 10;
-    var hash = bcrypt.hashSync(req.body.password, saltRounds);
-    var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
-
-    var entity = {
-        UserName: req.body.username,
-        Password: hash,
-        Name: req.body.name,
-        Email: req.body.email,
-        Address: req.body.address,
-        Phone: req.body.phone,
-        DOB: dob,
+    if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+        //res.redirect('/account/register');
+        return res.render('vwAccount/register', {
+            err_message: 'Please select captcha first'
+        })
     }
+    const secretKey = "6LdpvDEUAAAAAHszsgB_nnal29BIKDsxwAqEbZzU";
 
-    userModel.add(entity).then(id => {
-        res.redirect('/account/login');
-    }).catch(error => {
-        console.log(error);
+    const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+
+    request(verificationURL, function (error, response, body) {
+        body = JSON.parse(body);
+
+        if (body.success !== undefined && !body.success) {
+            //res.redirect('/account/register');
+            return res.render('vwAccount/register', {
+                err_message: 'Failed captcha verification'
+            })
+        }
+        else {
+            var saltRounds = 10;
+            var hash = bcrypt.hashSync(req.body.password, saltRounds);
+            var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
+
+            var entity = {
+                UserName: req.body.username,
+                Password: hash,
+                Name: req.body.name,
+                Email: req.body.email,
+                Address: req.body.address,
+                Phone: req.body.phone,
+                DOB: dob,
+            }
+
+            userModel.add(entity).then(id => {
+                res.redirect('/account/login');
+            }).catch(error => {
+                console.log(error);
+            });
+        }
     });
 })
 
