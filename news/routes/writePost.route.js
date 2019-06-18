@@ -3,6 +3,13 @@ var moment = require('moment');
 var post = require('../models/post.model');
 var router = express.Router();
 
+router.get('/', (req, res) => {
+    var id = req.user.UserId;
+    var url = '/writer/' + id;
+    console.log(url);
+    res.redirect(url);
+});
+
 router.get('/:id', (req, res) => {
     var id = req.params.id;
     res.render('writer/dashboard', {
