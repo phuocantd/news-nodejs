@@ -37,16 +37,6 @@
             <div class="col-4 d-flex justify-content-end">
                 <form id="frmSignout" action="/account/logout" method="POST"></form>
                 <ul class="nav d-flex justify-content-between">
-                    {{#if isAdmin}}
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/admin">Admin</a>
-                    </li>
-                    {{/if}}
-                    {{#if isWriter}}
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/writer/">Writer</a>
-                    </li>
-                    {{/if}}
                     {{#if isAuthenticated}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
@@ -55,6 +45,18 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"
                             style="z-index: 1021">
+                            {{#if isAdmin}}
+                            <a class="dropdown-item" href="/admin">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Admin
+                            </a>
+                            {{/if}}
+                            {{#if isWriter}}
+                            <a class="dropdown-item" href="/writer">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Writer
+                            </a>
+                            {{/if}}
                             <a class="dropdown-item" href="/profile/edit">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 Edit Profile

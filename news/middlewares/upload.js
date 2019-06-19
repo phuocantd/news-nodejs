@@ -5,7 +5,7 @@ var storage = multer.diskStorage({
         cb(null, './publics/post_pictures')
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        cb(null, file.fieldname + '.jpg')
     }
 })
 
@@ -13,7 +13,7 @@ var upload = multer({ storage });
 
 module.exports = function (app) {
     app.post('/writer/writePost', (req, res, next) => {
-        upload.array('input-pic')(req, res, err => {
+        upload.single('input-pic')(req, res, err => {
             if (err) {
                 return res.json({
                     error: err.message
