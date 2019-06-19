@@ -33,7 +33,7 @@ router.get('/:id/edit/:id1', (req, res) => {
     query.then(rows => {
         var tagQuery = post.tagsId(id1);
         tagQuery.then(tagRows => {
-            console.log(tagRows);
+            // console.log(tagRows);
             res.render('writer/edit', {
                 layout: 'writerDashboard.hbs',
                 content: rows[0],
