@@ -20,6 +20,14 @@ module.exports = (req, res, next) => {
       else
         res.locals.isWriter = false;
     })
+
+    userModel.users_roles(user.UserId, 'Editor').then(rows => {
+      if (rows.length > 0) {
+        res.locals.isEditor = true;
+      }
+      else
+        res.locals.isEditor = false;
+    })
     res.locals.authUser = req.user;
     res.locals.dob = moment(req.user.DOB).format('DD/MM/YYYY');;
   }

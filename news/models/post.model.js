@@ -13,6 +13,15 @@ module.exports = {
         WHERE pu.PostId = ${id} and pu.State = 4`);
     },
 
+    contentTag: id => {
+        return db.load(`select * from Posts p, Posts_Tags pt, Tags t
+        where p.PostId = pt.PostId and pt.TagId = t.TagId
+        and t.TagId in (select ptt.TagId from (select p.*, u.Name from Posts p inner join Users u on p.Author = u.UserId) pu inner join 
+        (select pt.PostId, t.* from DemoDB.Posts_Tags pt inner join DemoDB.Tags t on pt.TagId = t.TagId) ptt
+        on pu.PostId = ptt.PostId
+        WHERE pu.PostId = ${id} and pu.State = 4) limit 5`);
+    },
+
     editContent: id => {
         return db.load(`select *
         from (select p.*, u.Name from Posts p inner join Users u on p.Author = u.UserId) pu inner join 

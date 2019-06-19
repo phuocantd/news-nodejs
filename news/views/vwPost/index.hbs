@@ -74,8 +74,13 @@
                     <h6 class="underline-seperate">
                         <span class="px-1">TOP NEWS</span>
                     </h6>
-
-
+                    <ul class="nav">
+                        {{#each relatedPost}}
+                        <li class="nav-item my-2">
+                            <a href="/post/{{PostId}}">{{Title}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
         </div>
