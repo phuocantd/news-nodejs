@@ -2,12 +2,11 @@ var express = require("express");
 var moment = require('moment');
 var post = require('../models/post.model');
 var router = express.Router();
-<<<<<<< HEAD
-var writePostModle = require('../models/post.model');
-var moment = require('moment');
-=======
 
->>>>>>> beb70d398217a3a686f21768b875fec46becae27
+var moment = require('moment');
+
+
+
 router.get('/', (req, res) => {
     var id = req.user.UserId;
     var url = '/writer/' + id;
@@ -112,7 +111,7 @@ router.get('/:id/published', (req, res) => {
     });
 });
 
-router.post('/:id', (req, res) => {
+router.post('/add', (req, res) => {
     //console.log(req.body);
     //res.end('....');
     var entity = {
