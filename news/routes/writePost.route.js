@@ -111,20 +111,22 @@ router.get('/:id/published', (req, res) => {
     });
 });
 
-router.post('/add', (req, res) => {
+router.post('/:id/writePost', (req, res) => {
     //console.log(req.body);
     //res.end('....');
     var entity = {
         Title: req.body.title,
         Description: req.body.description,
+        Author: req.params.id,
         Content: req.body.content,
-        DraftDate: moment().format("YYYY-MM-DD")
+        DraftDate: moment().format("YYYY-MM-DD"),
+        State: 2,
     }
 
     post.add(entity)
         .then(id => {
             console.log(id);
-            res.render("");
+            res.redirect('/writer');
         })
         .catch(err => {
             console.log(err);
