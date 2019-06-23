@@ -20,9 +20,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fas/theme.min.js"></script>
 <script>
-    var id = $('#input-pic').val();
-    console.log(id);
-    console.log(123);
     $(function () {
         $('#input-pic').fileinput({
             theme: 'fas',
@@ -68,6 +65,9 @@
                 <div class="file-loading">
                     <input id="input-pic" name="input-pic" type="file" value={{{content.Content}}}>
                 </div>
+                <p>Please change the picture's name followed by your post's id</p>
+                <p>Example: http://localhost:3000/writer/3/edit/<strong>20</strong></p>
+                <p><strong>20</strong> is your post's id</p>
             </div>
             <div class="form-group">
                 <label><b>Content:</b></label>

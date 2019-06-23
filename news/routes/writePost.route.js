@@ -112,7 +112,7 @@ router.get('/:id/published', (req, res) => {
 });
 
 router.post('/:id/writePost', (req, res) => {
-    //console.log(req.body);
+    // console.log(req.body.tags);
     //res.end('....');
     var entity = {
         Title: req.body.title,
@@ -125,14 +125,17 @@ router.post('/:id/writePost', (req, res) => {
 
     post.add(entity)
         .then(id => {
-            console.log(id);
+            var tag = req.body.tags;
+            for (let i = 0; i < req.body.tags.length; i++) {
+                post.addTags(id, parseInt(tag[i])).then(() => {
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
             res.redirect('/writer');
         })
         .catch(err => {
             console.log(err);
         })
-
-    console.log(req.body);
-
 })
 module.exports = router;

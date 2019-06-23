@@ -34,6 +34,10 @@ module.exports = {
         return db.add('DemoDB.Posts', entity);
     },
 
+    addTags: (id, tag) => {
+        return db.load(`insert into DemoDB.Posts_Tags values (${id}, ${tag})`);
+    },
+
     draftPost: () => {
         return db.load(`select PostId, Title, Author, DraftDate from DemoDB.Posts where Posts.State < 4 and Posts.State > 1`);
     },
